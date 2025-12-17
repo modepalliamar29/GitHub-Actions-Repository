@@ -3,10 +3,12 @@ on:
     push:
     pull_request:
     workflow_dispatch:
+    schedule:
+        - cron: "*/5 * * * *"
 jobs:
     event-check:
         runs-on: ubuntu-latest
         steps:
             - name: check event type
               run: echo "I have been triggered by a(n) ${{ github.event_name }} event."
-              
+
