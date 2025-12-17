@@ -1,0 +1,12 @@
+name: 02- triggers/events
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+jobs:
+    event-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: check event type
+              run: echo "I have been triggered by a(n) ${{ github.event_name }} event."
+              
