@@ -1,0 +1,11 @@
+name: 04- build and test react app
+on: push
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v5
+
+            - name: print the folder tree
+              run: ls -ltr
