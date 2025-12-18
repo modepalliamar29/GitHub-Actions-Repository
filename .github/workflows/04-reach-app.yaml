@@ -17,8 +17,6 @@ jobs:
               
             - name: install dependencies
               run: |
-                pwd
-                ls -ltr
                 npm ci
 
             - name: run tests

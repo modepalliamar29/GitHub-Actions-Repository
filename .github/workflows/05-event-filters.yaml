@@ -1,0 +1,12 @@
+name: 05 event filters 
+on:
+    pull_request: 
+      types: [ opened synchronized reopened closed ]
+      branches:
+        - main
+jobs:
+    event-filter-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: check event action
+              run: echo "I have been triggered by a pull_request event with the action: ${{ github.event.action }}."
