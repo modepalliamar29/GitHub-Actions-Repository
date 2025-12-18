@@ -10,18 +10,16 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v5
 
-            - name: print the currenbt working directory
-              run: |
-                pwd
-                ls -ltr
-
             - name: node setup
               uses: actions/setup-node@v3
               with:
                   node-version: '20.x'
               
             - name: install dependencies
-              run: npm ci
+              run: |
+                pwd
+                ls -ltr
+                npm ci
 
             - name: run tests
               run: npm test
