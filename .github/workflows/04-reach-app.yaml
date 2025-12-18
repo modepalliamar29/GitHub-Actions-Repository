@@ -3,9 +3,15 @@ on: push
 jobs:
     build:
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: 04-using-actions/react-app
         steps:
             - name: checkout code
               uses: actions/checkout@v5
+
+            - name: print the currenbt working directory
+              run: pwd;ls -ltr
 
             - name: node setup
               uses: actions/setup-node@v3
@@ -14,8 +20,6 @@ jobs:
               
             - name: install dependencies
               run: npm ci
-              working-directory: ./react-app
 
             - name: run tests
               run: npm test
-              working-directory: ./react-app
