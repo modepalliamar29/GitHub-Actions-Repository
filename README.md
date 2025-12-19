@@ -1,1 +1,1 @@
-This is a repository for practicing and playing around with github actions.running once
+This is a repository for practicing and playing around with github actions.
