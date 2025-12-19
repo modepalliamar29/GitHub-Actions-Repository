@@ -30,10 +30,15 @@ jobs:
         runs-on: ubuntu-latest
         name: ${{ matrix.colour}}-${{ matrix.shape }}-${{ matrix.size }}
         strategy:
+            fail-fast: true
             matrix:
                 colour: [red, green]
                 shape: [circle, square]
                 size: [small, large]
+                include:
+                     - colour: blue
+                       shape: triangle
+                       size: medium
         steps:
             - name: Display example matrix values
               run:  echo "${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}"
