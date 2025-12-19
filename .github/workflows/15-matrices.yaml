@@ -6,12 +6,18 @@ jobs:
         runs-on: ubuntu-latest
         name: ${{ matrix.os }}-${{ matrix.node-version }}
         strategy:
+            fail-fast: false
             matrix:
                 node-version: [18.x, 20.x, 21.x]
                 os:
                     - ubuntu-latest
                     - windows-latest
-                    - macos-latest
+            include:
+                - os: ubuntu-latest
+                  node-version: 16.x
+                - os: ubuntu-latest
+                  node-version: 21.x
+                  tag: experimental
         steps:
             - name: code checkout
               uses: actions/checkout@v5
