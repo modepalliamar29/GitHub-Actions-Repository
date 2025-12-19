@@ -19,8 +19,16 @@ jobs:
             - name: always message
               if: ${{ always() }}
               run: echo "This message runs regardless of the previous step's outcome."
-            - name: sleep message
-              run: sleep 10
             - name: cancelled message
               if: ${{ cancelled() }}
               run: echo "The workflow was cancelled."
+            - name: Print PR title
+              run: echo "${{ github.event.pull_request.title }}"
+            - name: Print PR labels
+              run: |
+                cat << EOF
+                ${{ toJSON(github.event.pull_request.labels) }}
+                EOF
+            - name: Bug step
+              if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix') }}
+              run: echo "I am a bug fix"
