@@ -38,13 +38,13 @@ jobs:
 
       - name: Download cached dependencies
         uses: actions/cache@v3
-        if: ${{ inputs.cache-otion }}
         id: cache
         with:
           path: react-app/node_modules
           key: ${{ steps.cache-key.outputs.CACHE_KEY }}
 
       - name: install dependencies 
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci 
       
       - name: run tests 
