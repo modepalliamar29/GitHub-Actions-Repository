@@ -19,6 +19,8 @@ jobs:
             - name: always message
               if: ${{ always() }}
               run: echo "This message runs regardless of the previous step's outcome."
+            - name: sleep message
+              run: sleep 10
             - name: cancelled message
               if: ${{ cancelled() }}
               run: echo "The workflow was cancelled."
