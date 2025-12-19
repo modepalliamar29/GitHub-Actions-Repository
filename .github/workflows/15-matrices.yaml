@@ -39,6 +39,7 @@ jobs:
                 include:
                      - colour: blue
                        shape: triangle
+                     - opacity: 50
         steps:
             - name: Display example matrix values
               run:  echo "${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}"
