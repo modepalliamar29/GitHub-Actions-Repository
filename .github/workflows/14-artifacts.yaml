@@ -34,7 +34,7 @@ jobs:
               run: npm run build
 
             - name: upload artifacts
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v6
               with:
                   name: app
                   path: react-app/build
@@ -44,7 +44,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: download the artifacts
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v7
               with:
                   name: app
                   path: build
