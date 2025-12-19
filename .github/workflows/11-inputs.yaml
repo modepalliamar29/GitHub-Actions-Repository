@@ -6,12 +6,12 @@ on:
                 type: boolean
                 description: 'Set to true to perform a dry run'
                 required: true
-                default: 'false'
+                default: false
             target:
                 type: environment
                 description: 'Deployment target environment'
                 required: true
-                default: 'develop"
+                default: develop
             tag:
                 type: choice
                 description: 'Select the release tag'
