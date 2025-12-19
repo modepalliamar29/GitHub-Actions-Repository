@@ -3,7 +3,7 @@ on:
     push:
     workflow_dispatch:
 env:
-    UNDEFINED_VAR: "this is undefined in repo vars"
+    UNDEFINED_VAR: "${{ vars.UNDEFINED_VAR }} || 'default value' }}"
 jobs:
     echo-vars:
         runs-on: ubuntu-latest
