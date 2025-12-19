@@ -39,7 +39,11 @@ jobs:
                 include:
                      - colour: blue
                        shape: triangle
-                     - opacity: 50
+                       size: medium
+                exclude:
+                     - colour: green
+                       shape: circle
+                       size: large
         steps:
             - name: Display example matrix values
               run:  echo "${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}"
