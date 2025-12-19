@@ -1,6 +1,15 @@
 name: 12 outputs example workflow
 on:
     workflow_dispatch:
+        inputs:
+            build-status:
+                type: choice
+                description: 'Expected build status to proceed with deployment'
+                required: true
+                options:
+                    - 'success'
+                    - 'failure'
+                default: 'success'
 jobs:
     build:
         runs-on: ubuntu-latest
