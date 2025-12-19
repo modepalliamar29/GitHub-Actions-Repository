@@ -1,0 +1,39 @@
+name: 11 inputs example workflow
+on: 
+    workflow_dispatch:
+        inputs:
+            dry-run:
+                type: boolean
+                description: 'Set to true to perform a dry run'
+                required: true
+                default: 'false'
+            target:
+                type: environment
+                description: 'Deployment target environment'
+                required: true
+                default: 'develop"
+            tag:
+                type: choice
+                description: 'Select the release tag'
+                options:
+                    - 'v1.0'
+                    - 'v1.1'
+                    - 'v2.0'
+                required: true
+                default: 'v1.0'
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Building the code
+              run: |
+                echo "Building the code from tag: ${{ inputs.tag }}"
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        if: ${{ !inputs.dry-run }}
+        environment: ${{ inputs.target }}
+        steps:
+            - name: deploying the application
+              run: |
+                echo "Deploying to environment: ${{ inputs.target }} with tag: ${{ inputs.tag }}"
