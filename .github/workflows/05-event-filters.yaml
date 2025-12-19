@@ -4,9 +4,6 @@ on:
       types: [ opened, synchronize, reopened, closed ]
       branches:
         - main
-      branches-ignore:      
-        - develop
-        - feature/**
 jobs:
     event-filter-check:
         runs-on: ubuntu-latest
