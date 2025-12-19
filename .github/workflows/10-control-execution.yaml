@@ -16,6 +16,7 @@ jobs:
               run: echo "building the code..."
     unit_test:
         runs-on: ubuntu-latest
+        continue-on-error: ${{ !inputs.UNIT_TEST }}
         steps:
             - name: running the unit tests
               run: echo "running the unit tests..."
