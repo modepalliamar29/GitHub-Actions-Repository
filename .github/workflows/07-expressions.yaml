@@ -20,5 +20,5 @@ jobs:
                 echo "The debug input value is: ${{ inputs.debug }}"
 
             - name: '[debug] Print when triggered from main'
-              if: inputs.debug && github.ref == 'refs/heads/main'
+              if: inputs.debug || github.ref == 'refs/heads/main'
               run: echo "I was triggered from main"
