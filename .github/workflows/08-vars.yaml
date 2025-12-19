@@ -13,3 +13,9 @@ jobs:
                 echo "The repo var is: ${{ vars.REPO_VAR }}"
                 echo "The repo var2 is: $REPO_VAR2"
                 echo "undefined var is : ${{ env.UNDEFINED_VAR }}"
+
+            - name: environment variables
+              run: |
+               echo " the env var is : ${{ vars.ENV_VAR }}"
+               echo " the env var2 is : ${{ vars.ENV_VAR2 }}"
+               echo "override env var is : ${{ vars.OVERWRITTEN_VAR }}"
