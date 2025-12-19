@@ -1,0 +1,38 @@
+name: 06 - contexts check
+run-name: Check contexts | DEBUG ${{ inputs.debug }}
+on:
+    workflow_dispatch:
+        inputs:
+            debug:
+                description: 'Enable debug mode'
+                required: true
+                default: 'false'
+env:
+    CUSTOM_ENV_VAR: "workflow"
+jobs:
+    check-contexts:
+        runs-on: ubuntu-latest
+        env:
+            CUSTOM_ENV_VAR: "job"
+        steps:
+            - name: Check github context
+              run: |
+                echo "The repository is: ${{ github.repository }}"
+                echo "The workflow is: ${{ github.workflow }}"
+                echo "The event name is: ${{ github.event_name }}"
+                echo "The SHA is: ${{ github.sha }}"
+                echo "The actor is: ${{ github.actor }}"
+                echo "The ref is: ${{ github.ref }}"
+                echo "The job is: ${{ github.job }}"
+                echo "The run number is: ${{ github.run_number }}"
+                echo "The run ID is: ${{ github.run_id }}"
+            - name: Check runner context
+              run: |    
+                echo "The runner OS is: $RUNNER_OS"
+                echo "The runner temp directory is: $RUNNER_TEMP"
+                echo "The runner tool cache directory is: $RUNNER_TOOL_CACHE"
+            - name: Check env context
+              env:
+                  CUSTOM_ENV_VAR: "step"
+              run: |
+                echo "The custom environment variable is: $CUSTOM_ENV_VAR"
