@@ -1,5 +1,6 @@
 name: 15 matrics solution
 on: 
+    push:
     workflow_dispatch:
 jobs:
     backward-compatability:
@@ -38,7 +39,6 @@ jobs:
                 include:
                      - colour: blue
                        shape: triangle
-                       size: medium
         steps:
             - name: Display example matrix values
               run:  echo "${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}"
