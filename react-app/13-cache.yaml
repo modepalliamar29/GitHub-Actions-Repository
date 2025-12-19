@@ -1,0 +1,45 @@
+name: 13 caching solution
+on:
+  workflow_dispatch:
+    inputs:
+      cache-otion:
+        type: boolean
+        description: 'Enable caching for dependencies'
+        required: true
+        default: true
+      node-version:
+        type: choice
+        description: 'Node.js version to use'
+        required: true
+        options:
+          - 18.x
+          - 20.x
+          - 21.x
+        default: 20.x
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: react-app
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v5
+
+      - name: node setup
+        uses: actions/node-setup@v3
+        with: 
+          node-version: ${{ inputs.node-version }}
+
+      - name: install dependencies 
+        run: npm ci 
+      
+      - name: run tests 
+        run: npm run test
+
+      - name: build project
+        run: npm run build
+
+      - name: deploying 
+        run: echo "Deploying the application..."
+
