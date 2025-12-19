@@ -1,0 +1,13 @@
+name: 08 vars
+on: 
+    push:
+    workflow_dispatch:
+jobs:
+    echo-vars:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print the repo vars
+              run: |
+                echo "The repo var is: ${{ vars.REPO_VAR }}"
+                echo "The repo var2 is: ${{ vars.REPO_VAR2 }}"
+                echo "undefined var is : ${{ vars.UNDEFINED_VAR || 'default value for undefined var' }}"
