@@ -32,7 +32,5 @@ jobs:
                 echo "The runner temp directory is: $RUNNER_TEMP"
                 echo "The runner tool cache directory is: $RUNNER_TOOL_CACHE"
             - name: Check env context
-              env:
-                  CUSTOM_ENV_VAR: "step"
               run: |
-                echo "The custom environment variable is: $CUSTOM_ENV_VAR"
+                echo "The custom environment variable is: ${{ env.CUSTOM_ENV_VAR }}"
