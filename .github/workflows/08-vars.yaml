@@ -2,6 +2,8 @@ name: 08 vars
 on: 
     push:
     workflow_dispatch:
+env:
+    UNDEFINED_VAR: "this is undefined in repo vars"
 jobs:
     echo-vars:
         runs-on: ubuntu-latest
@@ -9,5 +11,5 @@ jobs:
             - name: print the repo vars
               run: |
                 echo "The repo var is: ${{ vars.REPO_VAR }}"
-                echo "The repo var2 is: ${{ vars.REPO_VAR2 }}"
-                echo "undefined var is : ${{ vars.UNDEFINED_VAR || 'default value for undefined var' }}"
+                echo "The repo var2 is: $REPO_VAR2"
+                echo "undefined var is : ${{ env.UNDEFINED_VAR }}"
