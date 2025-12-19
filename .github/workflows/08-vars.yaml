@@ -7,6 +7,7 @@ env:
 jobs:
     echo-vars:
         runs-on: ubuntu-latest
+        environment: dev
         steps:
             - name: print the repo vars
               run: |
@@ -15,7 +16,6 @@ jobs:
                 echo "undefined var is : ${{ env.UNDEFINED_VAR }}"
 
             - name: environment variables
-              environment: dev
               run: |
                echo " the env var is : ${{ vars.ENV_VAR }}"
                echo " the env var2 is : ${{ vars.ENV_VAR2 }}"
