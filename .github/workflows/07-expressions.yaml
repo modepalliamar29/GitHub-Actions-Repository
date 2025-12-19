@@ -1,0 +1,21 @@
+name: 07 expressions
+run-name: Check expressions based on input | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
+on:
+    push:
+    workflow_dispatch:
+        inputs:
+            debug:
+                description: " this is for defind the debug level"
+                type: boolean
+                required: true
+                default: false
+jobs:
+    check-expressions:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check expressions
+              if: ${{ inputs.debug == 'true' }}
+              run: |
+                echo "Debug mode is enabled."
+                echo "The debug input value is: ${{ inputs.debug }}"
+               
