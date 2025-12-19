@@ -31,6 +31,19 @@ jobs:
         with: 
           node-version: ${{ inputs.node-version }}
 
+      - name: calculate cache
+        id: cache-key
+        run: |
+          echo "CACHE_KEY=deps-node-modules-${{ hashFiles('react-app/package-lock.json') }}" >> "$GITHUB_OUTPUT"
+
+      - name: Download cached dependencies
+        uses: actions/cache@v3
+        if: ${{ inputs.cache-otion }}
+        id: cache
+        with:
+          path: react-app/node_modules
+          key: ${{ steps.cache-key.outputs.CACHE_KEY }}
+
       - name: install dependencies 
         run: npm ci 
       
