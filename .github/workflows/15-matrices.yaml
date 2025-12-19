@@ -12,12 +12,12 @@ jobs:
                 os:
                     - ubuntu-latest
                     - windows-latest
-            include:
-                - os: ubuntu-latest
-                  node-version: 16.x
-                - os: ubuntu-latest
-                  node-version: 21.x
-                  tag: experimental
+                include:
+                    - os: ubuntu-latest
+                      node-version: 16.x
+                    - os: ubuntu-latest
+                      node-version: 21.x
+                      tag: experimental
         steps:
             - name: code checkout
               uses: actions/checkout@v5
